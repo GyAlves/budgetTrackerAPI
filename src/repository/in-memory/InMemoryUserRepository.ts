@@ -18,9 +18,18 @@ export class InMemoryUserRepository implements IUsersRepository{
         if (!user) return null;
         return user;
     }
-    async createUser(user: User): Promise<number[]> {
+    async createUser(data: User): Promise<User> {
+        const user = {
+            id: data.id,
+            first_name: data.first_name,
+            last_name: data.last_name,
+            email: data.email,
+            password: data.password,
+            role: data.role
+        }
+
         this.users.push(user);
-        return [this.users.length];
+        return user;
     }
     async updateUserById(user_id: string, updatedUser: Omit<User, 'id'>): Promise<void | null> {
         const userIndex = this.users.findIndex(user => user.id === user_id);

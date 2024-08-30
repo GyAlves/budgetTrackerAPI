@@ -7,6 +7,6 @@ export class User implements IUser {
         public last_name: string,
         public email: string,
         public password: string,
-        public role: Enumerator,
+        public role: string,
     ){}
 }
